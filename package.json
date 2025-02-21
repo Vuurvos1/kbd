@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "ergogen": "ergogen"
+  },
+  "dependencies": {
+    "ergogen": "^4.1.0"
+  }
+}
