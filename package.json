@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "ergogen": "ergogen"
+    "ergogen": "ergogen",
+    "ergogen:kbd1": "ergogen ./kbd1/"
   },
   "dependencies": {
     "ergogen": "^4.1.0"
