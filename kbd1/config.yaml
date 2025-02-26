@@ -38,6 +38,11 @@ points:
             height: 1.5u
             splay: -15
             shift: [2, 3.5]
+        top:
+          key:
+            height: 1u
+            splay: 30
+            shift: [-8.5, 36]
       rows:
         thumb:
   mirror:
@@ -223,7 +228,7 @@ pcbs:
       horizontal_reset:
         what: EVQPUC
         params:
-          side: B
+          side: F
           from: GND
           to: RST
         where:
@@ -238,9 +243,35 @@ pcbs:
           shift: [0.5u + 19, -6.0]
           rotate: -90
         params:
-          side: B
+          side: F
           from: pos
           to: RAW
+      # Mounting holes
+      hole_top_left:
+        what: mountinghole
+        where:
+          ref: matrix_outer_top
+          shift: [0.5u, -0.5u]
+      hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: matrix_outer_bottom
+          shift: [0.5u, -0.5u]
+      hole_top_right:
+        what: mountinghole
+        where:
+          ref: matrix_inner_top
+          shift: [-0.5u, -0.5u + 1]
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: matrix_inner_bottom
+          shift: [-0.5u, -0.5u + 1]
+      hole_thumb_fan:
+        what: mountinghole
+        where:
+          ref: thumbfan_far_thumb
+          shift: [-0.5u, 0.5u]
 
 cases:
   plate:
