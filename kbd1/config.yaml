@@ -5,20 +5,30 @@ points:
     matrix:
       columns:
         outer:
+          key.column_net: P020
         pinky:
+          key.column_net: P022
         ring:
           key.stagger: 5
+          key.column_net: P024
         middle:
           key.stagger: 2
+          key.column_net: P100
         index:
           key.stagger: -2
+          key.column_net: P101
         inner:
           key.stagger: -2
+          key.column_net: P102
       rows:
         mod:
+          key.row_net: P113
         bottom:
+          key.row_net: P115
         home:
+          key.row_net: P002
         top:
+          key.row_net: P031
       anchor:
         # Shift the PCB slightly to the right and down, otherwise it's weirdly positioned outside of the main sheet in KiCad
         shift: [100, -150]
@@ -104,13 +114,15 @@ outlines:
       operation: stack
       fillet: 0
       points:
+        # top left corner
         - ref: matrix_outer_top
           shift: [-0.5u, 0.5u]
 
         - ref: matrix_outer_mod
           shift: [-0.5u, -0.5u]
-        - ref: matrix_middle_mod
-          shift: [-0.5u, -1u + 2]
+        - ref: matrix_outer_mod
+          shift: [2.5u, -0.5u]
+
         - ref: thumbfan_near_thumb
           shift: [-0.5u, -0.5u]
         - ref: thumbfan_far_thumb
@@ -121,9 +133,9 @@ outlines:
         - ref: thumbfan_far_thumb
           shift: [0.5u, 0.8u]
 
-        # right top corner
+        # top rightcorner
         - ref: matrix_inner_top
-          shift: [1.5u + 2, 0.5u -2]
+          shift: [1.5u + 1.75, 0.5u -2]
 
         - ref: matrix_inner_top
           shift: [0.5u, 0.5u -2]
@@ -162,6 +174,24 @@ outlines:
     - where: true
       what: rectangle
       size: [14, 14]
+  # TODO: cut part of the pcb to make space for the micro controller
+  # after the cut this will be the switchplate
+  switchplatecutout:
+    - what: polygon
+      operation: stack
+      fillet: 0
+      points:
+        # top left corner
+        - ref: matrix_inner_top
+          shift: [-0.5u, 0.5u]
+        - ref: matrix_inner_top
+          shift: [1.5u, 0.5u]
+        # bottom right corner
+        - ref: matrix_inner_top
+          shift: [1.5u, 0.5u]
+        - ref: matrix_inner_top
+          shift: [-0.5u, 0.5u]
+
   leftcutout:
     - name: left
     - operation: subtract
