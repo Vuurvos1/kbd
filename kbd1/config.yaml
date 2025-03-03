@@ -5,30 +5,30 @@ points:
     matrix:
       columns:
         outer:
-          key.column_net: P020
+          key.column_net: P002
         pinky:
-          key.column_net: P022
+          key.column_net: P115
         ring:
           key.stagger: 5
-          key.column_net: P024
+          key.column_net: P113
         middle:
           key.stagger: 2
-          key.column_net: P100
+          key.column_net: P111
         index:
           key.stagger: -2
-          key.column_net: P101
+          key.column_net: P010
         inner:
           key.stagger: -2
-          key.column_net: P102
+          key.column_net: P009
       rows:
         mod:
-          key.row_net: P113
+          row_net: P104
         bottom:
-          key.row_net: P115
+          row_net: P011
         home:
-          key.row_net: P002
+          row_net: P100
         top:
-          key.row_net: P031
+          row_net: P024
       anchor:
         # Shift the PCB slightly to the right and down, otherwise it's weirdly positioned outside of the main sheet in KiCad
         shift: [100, -150]
@@ -39,80 +39,37 @@ points:
         shift: [-0.5u, -1u]
       columns:
         near:
+          key.column_net: P113
         home:
           key.spread: 21.25
           key.splay: -15
-          key.stagger: -2
+          # key.origin: [-11.75, -9]
+          key.stagger: -3
+          key.column_net: P111
         far:
           key:
+            column_net: P010
             height: 1.5u
             splay: -15
             shift: [2, 3.5]
         top:
           key:
+            column_net: P009
             height: 1u
             splay: 30
             shift: [-8.5, 36]
       rows:
         thumb:
+          row_net: P106
   mirror:
     ref: matrix_pinky_home
     distance: 250
 
 outlines:
-  switchplate:
-    - what: polygon
-      operation: stack
-      fillet: 0
-      points:
-        - ref: matrix_outer_top
-          shift: [-0.5u, 0.5u]
-
-        - ref: matrix_outer_mod
-          shift: [-0.5u, -0.5u]
-        - ref: matrix_middle_mod
-          shift: [-0.5u, -1u + 2]
-        - ref: thumbfan_near_thumb
-          shift: [-0.5u, -0.5u]
-        - ref: thumbfan_far_thumb
-          shift: [-0.5u + 1.5, -0.8u]
-
-        - ref: thumbfan_far_thumb
-          shift: [0.5u, -0.8u]
-        - ref: thumbfan_far_thumb
-          shift: [0.5u, 0.8u]
-
-        - ref: matrix_inner_mod
-          shift: [0.5u, -0.08u]
-        - ref: matrix_inner_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_inner_top
-          shift: [-0.5u, 0.5u]
-
-        - ref: matrix_index_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_index_top
-          shift: [-0.5u, 0.5u]
-        - ref: matrix_index_top
-          shift: [-0.5u, 0.5u]
-
-        - ref: matrix_middle_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_middle_top
-          shift: [-0.5u, 0.5u]
-
-        - ref: matrix_ring_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_ring_top
-          shift: [-0.5u, 0.5u]
-
-        - ref: matrix_pinky_top
-          shift: [0.5u, 0.5u]
-
   pcb:
     - what: polygon
       operation: stack
-      fillet: 0
+      fillet: 1
       points:
         # top left corner
         - ref: matrix_outer_top
@@ -165,17 +122,17 @@ outlines:
 
         - ref: matrix_pinky_top
           shift: [0.5u, 0.5u]
-  left:
-    - where: true
-      what: rectangle
-      size: [cx + 2, cy + 2]
-      fillet: 2
+  # left:
+  #   - where: true
+  #     what: rectangle
+  #     size: [cx + 2, cy + 2]
+  #     fillet: 2
   leftkeys:
     - where: true
       what: rectangle
       size: [14, 14]
-  # TODO: cut part of the pcb to make space for the micro controller
-  # after the cut this will be the switchplate
+      # size: [14.5, 14.5] for 3d print
+
   switchplatecutout:
     - what: polygon
       operation: stack
@@ -183,23 +140,25 @@ outlines:
       points:
         # top left corner
         - ref: matrix_inner_top
-          shift: [-0.5u, 0.5u]
+          shift: [0.5u, 1u]
         - ref: matrix_inner_top
-          shift: [1.5u, 0.5u]
+          shift: [2u, 1u]
         # bottom right corner
         - ref: matrix_inner_top
-          shift: [1.5u, 0.5u]
+          shift: [2u, -2u]
         - ref: matrix_inner_top
-          shift: [-0.5u, 0.5u]
+          shift: [0.5u, -2u]
 
-  leftcutout:
-    - name: left
+  switchplateoutline:
+    - name: pcb
+    - operation: subtract
+      name: switchplatecutout
+      fillet: 1
+
+  switchplate:
+    - name: switchplateoutline
     - operation: subtract
       name: leftkeys
-  test:
-    - name: leftkeys
-    - operation: stack
-      name: pcb
 
 pcbs:
   left:
@@ -212,10 +171,10 @@ pcbs:
         what: mx
         params:
           hotswap: true
-          from: '{{col_net}}'
+          from: '{{column_net}}'
           to: '{{colrow}}'
       # Main diodes
-      diode_main:
+      diode:
         what: diode
         where: true
         params:
@@ -224,21 +183,28 @@ pcbs:
         adjust:
           shift: [0, -4.5]
           rotate: 0
-      nice_nano:
+      nice_nano_left:
         what: nice_nano
         params:
-          orientation: up
+          orientation: down
         where:
           ref: matrix_inner_top
           shift: [20, -12]
           rotate: -90.0
+      nice_nano_right:
+        what: nice_nano
+        params:
+          orientation: down
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [20, -12]
+          rotate: 90.0
       nice_view:
         what: nice_view
         params:
-          SDA: P0.17
-          SCL: P0.20
-          CS: P0.24
-        # orientation: up
+          SDA: P020
+          SCL: P017
+          CS: P006
         where:
           ref: matrix_inner_top
           shift: [20, -30]
@@ -305,5 +271,5 @@ pcbs:
 
 cases:
   plate:
-    - name: leftcutout
+    - name: switchplate
       extrude: 1.2
