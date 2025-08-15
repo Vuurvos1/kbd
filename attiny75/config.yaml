@@ -1,0 +1,238 @@
+points:
+  zones:
+    matrix:
+      columns:
+        left_pinky:
+        left_ring:
+        left_middle:
+        left_index:
+        left_inner:
+        right_inner:
+        right_index:
+        right_middle:
+        right_ring:
+        right_pinky:
+        right_1:
+        right_2:
+        right_3:
+        right_4:
+          rows:
+            r0:
+              shift: [-0.5u, 0]
+            r1:
+              width: 2U -1
+              shift: [0.5U, 0]
+        right_5:
+          rows:
+            r1:
+              skip: true
+        right_6:
+      rows:
+        r1:
+        r0:
+
+    r2:
+      anchor:
+        ref: matrix_left_pinky_r1
+        shift: [-0, -1U]
+      columns:
+        left_mod_1:
+          key:
+            width: 1.5U - 1
+            shift: [0.25U, 0]
+        k1:
+          key:
+            spread: 1.5U
+        k2:
+        k3:
+        k4:
+        k5:
+        k6:
+        k7:
+        k8:
+        k9:
+        k10:
+        k11:
+        k12:
+        tab:
+          key:
+            width: 1.5U - 1
+            spread: 1.25U
+        k13:
+          key:
+            spread: 1.25U
+    r3:
+      anchor:
+        ref: matrix_left_pinky_r1
+        shift: [-0, -2U]
+      columns:
+        left_mod_1:
+          key:
+            width: 1.75U - 1
+            shift: [(1.75U - 1U) / 2, 0]
+        k1:
+          key:
+            spread: 1.75U
+        k2:
+        k3:
+        k4:
+        k5:
+        k6:
+        k7:
+        k8:
+        k9:
+        k10:
+        k11:
+        enter:
+          key:
+            width: 2.25U - 1
+            spread: (2.25U + 1U) / 2
+        k12:
+          key:
+            spread: (2.25U + 1U) / 2
+    r4:
+      anchor:
+        ref: matrix_left_pinky_r1
+        shift: [-0, -3U]
+      columns:
+        left_mod_1:
+          key:
+            width: 2.25U - 1
+            shift: [(2.25U - 1U) / 2, 0]
+        k1:
+          key:
+            spread: 2.25U
+        k2:
+        k3:
+        k4:
+        k5:
+        k6:
+        k7:
+        k8:
+        k9:
+        k10:
+        shift:
+          key:
+            width: 1.75U - 1
+            spread: (1.75U + 1U) / 2
+        k11:
+          key:
+            spread: (1.75U + 1U) / 2
+        k12:
+    r5:
+      anchor:
+        ref: matrix_left_pinky_r1
+        shift: [-0, -4U]
+      columns:
+        left_mod_1:
+          key:
+            width: 1.25U - 1
+            shift: [(1.25U - 1U) / 2, 0]
+            # spread: 1.25U
+        left_mod_2:
+          key:
+            width: 1.25U - 1
+            spread: (1.75U + 1U) / 2
+        left_mod_3:
+          key:
+            width: 1.25U - 1
+            spread: 1.25U
+        bar:
+          key:
+            width: 6.25U - 1
+            spread: 3.75U
+        right_mod_1:
+          key:
+            spread: (6.25U + 1U) / 2
+        right_mod_2:
+        right_mod_3:
+        arrow_1:
+        arrow_2:
+        arrow_3:
+
+outlines:
+  out:
+    - what: polygon
+      operation: stack
+      fillet: 0
+      points:
+        # top left corner
+        - ref: matrix_left_pinky_r0
+          shift: [-0.5U, 0.5U]
+
+        - ref: matrix_right_6_r0
+          shift: [0.5U, 0.5U]
+
+        # bottom right corner
+        - ref: r5_arrow_3
+          shift: [0.5U, -0.5U]
+
+        - ref: r5_left_mod_1
+          shift: [-0.5U - 0.25U / 2, -0.5U]
+  keys:
+    - where: true
+      what: rectangle
+      size: [14, 14]
+  cutout:
+    - name: out
+    - operation: subtract
+      name: keys
+
+pcbs:
+  out:
+    outlines:
+      main:
+        outline: out
+    footprints:
+      keyswitches:
+        where: true
+        what: mx
+        params:
+          hotswap: true
+          from: ''
+          to: ''
+      space_stabilizer:
+        what: mx_stabalizers
+        params:
+          size: 6.25
+        where:
+          - ref: r5_bar
+        adjust:
+          rotate: 180
+      stab_1:
+        where:
+          - ref: matrix_right_4_r1
+        what: mx_stabalizers
+        params:
+          size: 2
+        adjust:
+          rotate: 180
+      stab_2:
+        where:
+          - ref: r3_enter
+        what: mx_stabalizers
+        params:
+          size: 2
+        adjust:
+          rotate: 180
+      stab_3:
+        where:
+          - ref: r4_left_mod_1
+        what: mx_stabalizers
+        params:
+          size: 2
+        adjust:
+          rotate: 180
+      stab_4:
+        where:
+          - ref: r4_shift
+        what: mx_stabalizers
+        params:
+          size: 2
+        adjust:
+          rotate: 180
+
+cases:
+  plate:
+    - name: cutout
+      extrude: 1.2

@@ -2,7 +2,9 @@
   "scripts": {
     "ergogen": "ergogen",
     "gen:kbd1": "ergogen ./kbd1/ -o ./kbd1/output",
-    "watch:kbd1": "nodemon --exec \"pnpm run gen:kbd1\" ./kbd1/config.yaml"
+    "watch:kbd1": "nodemon --exec \"pnpm run gen:kbd1\" ./kbd1/config.yaml",
+    "gen:attiny75": "ergogen ./attiny75/ -o ./attiny75/output",
+    "watch:attiny75": "nodemon --exec \"pnpm run gen:attiny75\" ./attiny75/config.yaml"
   },
   "dependencies": {
     "ergogen": "^4.1.0"
