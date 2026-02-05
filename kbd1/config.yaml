@@ -12,10 +12,10 @@ points:
           key.stagger: 5
           key.column_net: P113
         middle:
-          key.stagger: 2
+          key.stagger: 3
           key.column_net: P111
         index:
-          key.stagger: -2
+          key.stagger: -3
           key.column_net: P010
         inner:
           key.stagger: -2
@@ -69,7 +69,7 @@ outlines:
   pcb:
     - what: polygon
       operation: stack
-      # fillet: 1
+      fillet: 5
       # counter clockwise
       points:
         # top left corner
@@ -81,6 +81,7 @@ outlines:
         - ref: matrix_outer_mod
           shift: [2.5u, -0.5u]
 
+        # thumb fan start (bottom left of first switch)
         - ref: thumbfan_near_thumb
           shift: [-0.5u, -0.5u]
         - ref: thumbfan_far_thumb
@@ -93,36 +94,36 @@ outlines:
 
         # top rightcorner
         - ref: matrix_inner_top
-          shift: [1.5u + 1.75, 0.5u -2]
+          shift: [1.5u + 1.75, 0.5u]
+
+        # - ref: matrix_inner_top
+        #   shift: [0.5u, 0.5u -2]
+        # - ref: matrix_inner_top
+        #   shift: [0.5u, 0.5u]
+
+        # - ref: matrix_inner_top
+        #   shift: [-0.5u, 0.5u]
 
         - ref: matrix_inner_top
-          shift: [0.5u, 0.5u -2]
-        - ref: matrix_inner_top
-          shift: [0.5u, 0.5u]
-
-        - ref: matrix_inner_top
-          shift: [-0.5u, 0.5u]
-
-        - ref: matrix_inner_top
-          shift: [-0.5u, 0.5u]
+          shift: [-0.5u + 2.5, 0.5u]
 
         - ref: matrix_index_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_index_top
-          shift: [-0.5u, 0.5u]
+          shift: [0.5u - 2.5, 0.5u + 3]
+        # - ref: matrix_index_top
+        #   shift: [-0.5u, 0.5u]
 
-        - ref: matrix_middle_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_middle_top
-          shift: [-0.5u, 0.5u]
+        # - ref: matrix_middle_top
+        #   shift: [0.5u, 0.5u]
+        # - ref: matrix_middle_top
+        #   shift: [-0.5u, 0.5u]
 
+        # - ref: matrix_ring_top
+        #   shift: [0.5u, 0.5u]
         - ref: matrix_ring_top
-          shift: [0.5u, 0.5u]
-        - ref: matrix_ring_top
-          shift: [-0.5u, 0.5u]
+          shift: [-0.5u + 2, 0.5u + 3]
 
         - ref: matrix_pinky_top
-          shift: [0.5u, 0.5u]
+          shift: [0.5u - 2, 0.5u]
   # left:
   #   - where: true
   #     what: rectangle
