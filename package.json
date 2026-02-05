@@ -1,8 +1,8 @@
 {
   "scripts": {
     "ergogen": "ergogen",
-    "gen:kbd1": "ergogen ./kbd1/ -o ./kbd1/output",
-    "watch:kbd1": "nodemon --exec \"pnpm run gen:kbd1\" ./kbd1/config.yaml"
+    "gen:kbd1": "ergogen ./kbd1/ -o ./kbd1/output -d",
+    "watch:kbd1": "nodemon --ignore ./kbd1/output --exec \"pnpm run gen:kbd1\" ./kbd1/config.yaml"
   },
   "dependencies": {
     "ergogen": "^4.1.0"
