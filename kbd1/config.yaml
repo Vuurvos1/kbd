@@ -30,7 +30,7 @@ points:
         top:
           row_net: P024
       anchor:
-        # Shift the PCB slightly to the right and down, otherwise it's weirdly positioned outside of the main sheet in KiCad
+        # Shift the PCB to the right and down, otherwise it's weirdly positioned outside of the main sheet in KiCad
         shift: [100, -150]
 
     thumbfan:
@@ -57,7 +57,7 @@ points:
             column_net: P009
             height: 1u
             splay: 30
-            shift: [-8.5, 35]
+            shift: [-8.5, 34.425] # maybe reference from the column on the side
       rows:
         thumb:
           row_net: P106
@@ -69,7 +69,8 @@ outlines:
   pcb:
     - what: polygon
       operation: stack
-      fillet: 1
+      # fillet: 1
+      # counter clockwise
       points:
         # top left corner
         - ref: matrix_outer_top
