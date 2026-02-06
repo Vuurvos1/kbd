@@ -2,9 +2,11 @@
   "scripts": {
     "ergogen": "ergogen",
     "gen:kbd1": "ergogen ./kbd1/ -o ./kbd1/output -d",
-    "watch:kbd1": "nodemon --ignore ./kbd1/output --exec \"pnpm run gen:kbd1\" ./kbd1/config.yaml"
+    "watch:kbd1": "nodemon --ignore ./kbd1/output --exec \"pnpm run gen:kbd1\" ./kbd1/config.yaml",
+    "jscad:kbd1": "openjscad ./kbd1/output/cases/plate.jscad -o ./kbd1/output/plate.stl"
   },
   "dependencies": {
+    "@jscad/openjscad": "^1.6.1",
     "ergogen": "^4.1.0"
   },
   "devDependencies": {

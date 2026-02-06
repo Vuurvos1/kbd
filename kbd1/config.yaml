@@ -104,34 +104,18 @@ outlines:
         - ref: matrix_inner_top
           shift: [1.5u + 1.75, 0.5u + 1]
 
-        # - ref: matrix_inner_top
-        #   shift: [0.5u, 0.5u -2]
-        # - ref: matrix_inner_top
-        #   shift: [0.5u, 0.5u]
-
-        # - ref: matrix_inner_top
-        #   shift: [-0.5u, 0.5u]
-
         - ref: matrix_inner_top
           shift: [-0.5u + 2.5, 0.5u + 1]
 
         - ref: matrix_index_top
           shift: [0.5u - 2.5, 0.5u + 3 + 1]
-        # - ref: matrix_index_top
-        #   shift: [-0.5u, 0.5u]
 
-        # - ref: matrix_middle_top
-        #   shift: [0.5u, 0.5u]
-        # - ref: matrix_middle_top
-        #   shift: [-0.5u, 0.5u]
-
-        # - ref: matrix_ring_top
-        #   shift: [0.5u, 0.5u]
         - ref: matrix_ring_top
           shift: [-0.5u + 2, 0.5u + 3 + 1]
 
         - ref: matrix_pinky_top
           shift: [0.5u - 2, 0.5u + 1]
+
   # Rectangle to create a straight vertical right edge
   # Positioned so its left edge aligns with matrix_inner_top right edge
   right_edge_bound:
@@ -156,7 +140,6 @@ outlines:
     - where: true
       what: rectangle
       size: [14, 14]
-      # size: [14.5, 14.5] for 3d print
 
   switchplatecutout:
     - what: polygon
