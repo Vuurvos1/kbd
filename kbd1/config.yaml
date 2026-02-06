@@ -52,15 +52,23 @@ points:
             height: 1.25u
             splay: -15
             shift: [2.5, 0.8]
+      rows:
+        thumb:
+          row_net: P106
+
+    thumbtop:
+      anchor:
+        ref: matrix_inner_mod
+        shift: [1u, 0u]
+      columns:
         top:
           key:
             column_net: P009
             height: 1u
-            splay: 30
-            shift: [-8.5, 34.425] # maybe reference from the column on the side
       rows:
         thumb:
           row_net: P106
+
   mirror:
     ref: matrix_pinky_home
     distance: 250
@@ -69,32 +77,32 @@ outlines:
   pcb:
     - what: polygon
       operation: stack
-      fillet: 5
+      # fillet: 5
       # counter clockwise
       points:
         # top left corner
         - ref: matrix_outer_top
-          shift: [-0.5u, 0.5u]
+          shift: [-0.5u - 1, 0.5u + 1]
 
         - ref: matrix_outer_mod
-          shift: [-0.5u, -0.5u]
+          shift: [-0.5u - 1, -0.5u - 1]
         - ref: matrix_outer_mod
-          shift: [2.5u, -0.5u]
+          shift: [2.5u + 1, -0.5u - 1]
 
         # thumb fan start (bottom left of first switch)
         - ref: thumbfan_near_thumb
-          shift: [-0.5u, -0.5u]
+          shift: [-0.5u - 1, -0.5u - 1]
         - ref: thumbfan_far_thumb
           shift: [-0.5u + 1.5, -0.8u]
 
         - ref: thumbfan_far_thumb
-          shift: [0.5u, -0.8u]
+          shift: [0.5u + 1, -0.8u]
         - ref: thumbfan_far_thumb
-          shift: [0.5u, 0.8u]
+          shift: [0.5u + 1, 0.8u]
 
         # top rightcorner
         - ref: matrix_inner_top
-          shift: [1.5u + 1.75, 0.5u]
+          shift: [1.5u + 1.75, 0.5u + 1]
 
         # - ref: matrix_inner_top
         #   shift: [0.5u, 0.5u -2]
@@ -105,10 +113,10 @@ outlines:
         #   shift: [-0.5u, 0.5u]
 
         - ref: matrix_inner_top
-          shift: [-0.5u + 2.5, 0.5u]
+          shift: [-0.5u + 2.5, 0.5u + 1]
 
         - ref: matrix_index_top
-          shift: [0.5u - 2.5, 0.5u + 3]
+          shift: [0.5u - 2.5, 0.5u + 3 + 1]
         # - ref: matrix_index_top
         #   shift: [-0.5u, 0.5u]
 
@@ -120,10 +128,25 @@ outlines:
         # - ref: matrix_ring_top
         #   shift: [0.5u, 0.5u]
         - ref: matrix_ring_top
-          shift: [-0.5u + 2, 0.5u + 3]
+          shift: [-0.5u + 2, 0.5u + 3 + 1]
 
         - ref: matrix_pinky_top
-          shift: [0.5u - 2, 0.5u]
+          shift: [0.5u - 2, 0.5u + 1]
+  # Rectangle to create a straight vertical right edge
+  # Positioned so its left edge aligns with matrix_inner_top right edge
+  right_edge_bound:
+    - what: rectangle
+      where:
+        ref: matrix_inner_top
+        shift: [2.5u + 1, -1u] # left edge at the top right corner X, shifted left by half width
+      size: [2u, 10u] # large enough to cover the entire keyboard
+
+  pcb_trimmed:
+    - name: pcb
+    - operation: subtract
+      fillet: 5
+      name: right_edge_bound
+
   # left:
   #   - where: true
   #     what: rectangle
@@ -152,7 +175,7 @@ outlines:
           shift: [0.5u, -2u]
 
   switchplateoutline:
-    - name: pcb
+    - name: pcb_trimmed
     - operation: subtract
       name: switchplatecutout
       # fillet: 5
@@ -166,7 +189,7 @@ pcbs:
   left:
     outlines:
       main:
-        outline: pcb
+        outline: pcb_trimmed
     footprints:
       keyswitches:
         where: true
