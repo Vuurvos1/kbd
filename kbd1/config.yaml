@@ -43,7 +43,6 @@ points:
         home:
           key.spread: 21.25
           key.splay: -15
-          # key.origin: [-11.75, -9]
           key.stagger: -3
           key.column_net: P111
         far:
@@ -77,7 +76,6 @@ outlines:
   pcb:
     - what: polygon
       operation: stack
-      # fillet: 5
       # counter clockwise
       points:
         # top left corner
@@ -125,11 +123,22 @@ outlines:
         shift: [2.5u + 1, -1u] # left edge at the top right corner X, shifted left by half width
       size: [2u, 10u] # large enough to cover the entire keyboard
 
+  # USB-C cable cutout - 13mm wide, positioned above the nice_nano
+  usb_cutout:
+    - what: rectangle
+      where:
+        ref: matrix_inner_top
+        shift: [18, 0.5u + 4 - 2] # centered above nice_nano, extending beyond PCB edge
+      size: [13, 10] # 13mm wide, tall enough to cut through edge
+      fillet: 2 # 2mm rounded corners
+
   pcb_trimmed:
     - name: pcb
     - operation: subtract
-      fillet: 5
       name: right_edge_bound
+      fillet: 5
+    - operation: subtract
+      name: usb_cutout
 
   # left:
   #   - where: true
@@ -161,7 +170,6 @@ outlines:
     - name: pcb_trimmed
     - operation: subtract
       name: switchplatecutout
-      # fillet: 5
 
   switchplate:
     - name: switchplateoutline
@@ -197,15 +205,15 @@ pcbs:
           orientation: down
         where:
           ref: matrix_inner_top
-          shift: [18, -11]
+          shift: [18, -10]
           rotate: -90.0
       nice_nano_right:
-        what: nice_nano
+        what: nice_nano_low_profile
         params:
           orientation: down
         where:
           ref: mirror_matrix_inner_top
-          shift: [20, -11]
+          shift: [20, -10]
           rotate: 90.0
       nice_view:
         what: nice_view
@@ -215,14 +223,14 @@ pcbs:
           CS: P006
         where:
           ref: matrix_inner_top
-          shift: [18, -29.25]
+          shift: [18, -28.25]
           rotate: 90.0
       # Battery jack
       jstph:
         what: jstph
         where:
           ref: matrix_inner_top
-          shift: [20.5, -1.5]
+          shift: [20.5, -0.5]
           rotate: -90
         params:
           side: B

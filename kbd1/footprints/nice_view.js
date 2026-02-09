@@ -59,11 +59,13 @@ module.exports = {
         p.rot + 180
       }) (layer B.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror)))
 
-      (fp_text user nice!view (at 7 0 ${
+      ${
+        '' /* (fp_text user nice!view (at 7 0 ${
         p.rot + 270
       }) (layer F.SilkS) (effects (font (size 1.5 1.5) (thickness 0.3))))
 
-      ${'' /* pins */}
+      ${'' /* pins */
+      }
       (pad 5 thru_hole oval (at 1.3 -5.08 ${
         p.rot + 270
       }) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.SDA.str})
