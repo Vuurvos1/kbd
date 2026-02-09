@@ -153,9 +153,9 @@ outlines:
           shift: [2u, 1u]
         # bottom right corner
         - ref: matrix_inner_top
-          shift: [2u, -2u]
+          shift: [2u, -1.5u]
         - ref: matrix_inner_top
-          shift: [0.5u, -2u]
+          shift: [0.5u, -1.5u]
 
   switchplateoutline:
     - name: pcb_trimmed
@@ -176,14 +176,14 @@ pcbs:
     footprints:
       keyswitches:
         where: true
-        what: mx
+        what: custom_hotswap
         params:
           hotswap: true
           from: '{{column_net}}'
           to: '{{colrow}}'
       # Main diodes
       diode:
-        what: diode
+        what: custom_diode
         where: true
         params:
           from: '{{colrow}}'
@@ -192,12 +192,12 @@ pcbs:
           shift: [0, -4.5]
           rotate: 0
       nice_nano_left:
-        what: nice_nano
+        what: nice_nano_low_profile
         params:
           orientation: down
         where:
           ref: matrix_inner_top
-          shift: [20, -12]
+          shift: [18, -11]
           rotate: -90.0
       nice_nano_right:
         what: nice_nano
@@ -205,7 +205,7 @@ pcbs:
           orientation: down
         where:
           ref: mirror_matrix_inner_top
-          shift: [20, -12]
+          shift: [20, -11]
           rotate: 90.0
       nice_view:
         what: nice_view
@@ -215,36 +215,36 @@ pcbs:
           CS: P006
         where:
           ref: matrix_inner_top
-          shift: [20, -30]
+          shift: [18, -29.25]
           rotate: 90.0
       # Battery jack
       jstph:
         what: jstph
         where:
-          ref: matrix_inner_bottom
-          shift: [23, 4]
+          ref: matrix_inner_top
+          shift: [20.5, -1.5]
           rotate: -90
         params:
           side: B
           pos: pos
           neg: GND
       # Reset switch (horizontal community version)
-      # horizontal_reset:
-      # what: EVQPUC
-      # params:
-      #   side: F
-      #   from: GND
-      #   to: RST
-      # where:
-      #   ref: matrix_inner_bottom
-      #   shift: [0.5u + 19, 2.8]
-      #   rotate: -90.0
+      horizontal_reset:
+        what: EVQPUC
+        params:
+          side: F
+          from: GND
+          to: RST
+        where:
+          ref: matrix_inner_bottom
+          shift: [0.5u + 18, 3]
+          rotate: -90.0
       # Battery on/off switch
       battery_switch:
         what: slider
         where:
           ref: matrix_inner_bottom
-          shift: [0.5u + 19, -6.0]
+          shift: [0.5u + 18, -6]
           rotate: -90
         params:
           side: F

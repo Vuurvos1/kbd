@@ -14,17 +14,17 @@ module.exports = {
 
       ${'' /* footprint reference */}        
       (fp_text reference "${p.ref}" (at 0 0) (layer F.SilkS) ${
-    p.ref_hide
-  } (effects (font (size 1.27 1.27) (thickness 0.15))))
+        p.ref_hide
+      } (effects (font (size 1.27 1.27) (thickness 0.15))))
       (fp_text value niceView (at -1.3 0) (layer F.Fab) ${
         p.ref_hide
       } (effects (font (size 1 1) (thickness 0.15))))
 
       ${'' /* component outline */}
-      (fp_line (start 0 -7) (end 36 -7) (layer F.SilkS) (width 0.381))
-      (fp_line (start 36 -7) (end 36 7) (layer F.SilkS) (width 0.381))
-      (fp_line (start 36 7) (end 0 7) (layer F.SilkS) (width 0.381))
-      (fp_line (start 0 7) (end 0 -7) (layer F.SilkS) (width 0.381))
+      (fp_line (start 0 -7) (end 36 -7) (layer F.Fab) (width 0.381))
+      (fp_line (start 36 -7) (end 36 7) (layer F.Fab) (width 0.381))
+      (fp_line (start 36 7) (end 0 7) (layer F.Fab) (width 0.381))
+      (fp_line (start 0 7) (end 0 -7) (layer F.Fab) (width 0.381))
 
       ${'' /* pin names */}
       (fp_text user SDA (at 3.5 -5.08 ${
