@@ -128,7 +128,7 @@ outlines:
     - what: rectangle
       where:
         ref: matrix_inner_top
-        shift: [18, 0.5u + 4 - 2] # centered above nice_nano, extending beyond PCB edge
+        shift: [18.5, 0.5u + 4 - 2] # centered above nice_nano, extending beyond PCB edge
       size: [13, 10] # 13mm wide, tall enough to cut through edge
       fillet: 2 # 2mm rounded corners
 
@@ -205,7 +205,7 @@ pcbs:
           orientation: down
         where:
           ref: matrix_inner_top
-          shift: [18, -10]
+          shift: [18.5, -10]
           rotate: -90.0
       nice_nano_right:
         what: nice_nano_low_profile
@@ -213,7 +213,7 @@ pcbs:
           orientation: down
         where:
           ref: mirror_matrix_inner_top
-          shift: [20, -10]
+          shift: [20.5, -10]
           rotate: 90.0
       nice_view:
         what: nice_view
@@ -223,14 +223,14 @@ pcbs:
           CS: P006
         where:
           ref: matrix_inner_top
-          shift: [18, -28.25]
+          shift: [18.5, -28.25]
           rotate: 90.0
       # Battery jack
       jstph:
         what: jstph
         where:
           ref: matrix_inner_top
-          shift: [20.5, -0.5]
+          shift: [22.75, -35]
           rotate: -90
         params:
           side: B
