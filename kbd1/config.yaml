@@ -73,47 +73,6 @@ points:
     distance: 250
 
 outlines:
-  pcb:
-    - what: polygon
-      operation: stack
-      # counter clockwise
-      points:
-        # top left corner
-        - ref: matrix_outer_top
-          shift: [-0.5u - 1, 0.5u + 1]
-
-        - ref: matrix_outer_mod
-          shift: [-0.5u - 1, -0.5u - 1]
-        - ref: matrix_outer_mod
-          shift: [2.5u + 1, -0.5u - 1]
-
-        # thumb fan start (bottom left of first switch)
-        - ref: thumbfan_near_thumb
-          shift: [-0.5u - 1, -0.5u - 1]
-        - ref: thumbfan_far_thumb
-          shift: [-0.5u + 1.5, -0.8u]
-
-        - ref: thumbfan_far_thumb
-          shift: [0.5u + 1, -0.8u]
-        - ref: thumbfan_far_thumb
-          shift: [0.5u + 1, 0.8u]
-
-        # top rightcorner
-        - ref: matrix_inner_top
-          shift: [1.5u + 1.75, 0.5u + 1]
-
-        - ref: matrix_inner_top
-          shift: [-0.5u + 2.5, 0.5u + 1]
-
-        - ref: matrix_index_top
-          shift: [0.5u - 2.5, 0.5u + 3 + 1]
-
-        - ref: matrix_ring_top
-          shift: [-0.5u + 2, 0.5u + 3 + 1]
-
-        - ref: matrix_pinky_top
-          shift: [0.5u - 2, 0.5u + 1]
-
   # Rectangle to create a straight vertical right edge
   # Positioned so its left edge aligns with matrix_inner_top right edge
   right_edge_bound:
@@ -128,27 +87,110 @@ outlines:
     - what: rectangle
       where:
         ref: matrix_inner_top
-        shift: [18.5, 0.5u + 4 - 2] # centered above nice_nano, extending beyond PCB edge
+        shift: [19, 0.5u + 4 - 2] # centered above nice_nano, extending beyond PCB edge
       size: [13, 10] # 13mm wide, tall enough to cut through edge
       fillet: 2 # 2mm rounded corners
 
-  pcb_trimmed:
-    - name: pcb
+  raw_board_left:
+    - what: polygon
+      operation: stack
+      # clockwhise
+      points:
+        # top left corner
+        - ref: matrix_outer_top
+          shift: [-0.5u - 1, 0.5u + 1]
+
+        - ref: matrix_pinky_top
+          shift: [0.5u - 2, 0.5u + 1]
+
+        - ref: matrix_ring_top
+          shift: [-0.5u + 2, 0.5u + 3 + 1]
+
+        - ref: matrix_index_top
+          shift: [0.5u - 2.5, 0.5u + 3 + 1]
+
+        - ref: matrix_inner_top
+          shift: [-0.5u + 2.5, 0.5u + 1]
+
+        # top right corner
+        - ref: matrix_inner_top
+          shift: [1.5u + 1.75, 0.5u + 1]
+
+        - ref: thumbfan_far_thumb
+          shift: [0.5u + 1, 0.8u]
+        - ref: thumbfan_far_thumb
+          shift: [0.5u + 1, -0.8u]
+
+        - ref: thumbfan_far_thumb
+          shift: [-0.5u + 1.5, -0.8u]
+
+        # thumb fan end (bottom left of first switch)
+        - ref: thumbfan_near_thumb
+          shift: [-0.5u - 1, -0.5u - 1]
+
+        - ref: matrix_outer_mod
+          shift: [2.5u + 1, -0.5u - 1]
+        - ref: matrix_outer_mod
+          shift: [-0.5u - 1, -0.5u - 1]
+
+  raw_board_right:
+    - what: polygon
+      operation: stack
+      # clockwise (mirrored from left)
+      points:
+        # top right corner
+        - ref: mirror_matrix_outer_top
+          shift: [-0.5u - 1, 0.5u + 1]
+
+        - ref: mirror_matrix_pinky_top
+          shift: [0.5u - 2, 0.5u + 1]
+
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5u + 2, 0.5u + 3 + 1]
+
+        - ref: mirror_matrix_index_top
+          shift: [0.5u - 2.5, 0.5u + 3 + 1]
+
+        - ref: mirror_matrix_inner_top
+          shift: [-0.5u + 2.5, 0.5u + 1]
+
+        # top left corner
+        - ref: mirror_matrix_inner_top
+          shift: [1.5u + 1.75, 0.5u + 1]
+
+        - ref: mirror_thumbfan_far_thumb
+          shift: [0.5u + 1, 0.8u]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [0.5u + 1, -0.8u]
+
+        - ref: mirror_thumbfan_far_thumb
+          shift: [-0.5u + 1.5, -0.8u]
+
+        # thumb fan end (bottom left of first switch)
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-0.5u - 1, -0.5u - 1]
+
+        - ref: mirror_matrix_outer_mod
+          shift: [2.5u + 1, -0.5u - 1]
+        - ref: mirror_matrix_outer_mod
+          shift: [-0.5u - 1, -0.5u - 1]
+
+  pcb_outline:
+    - name: raw_board_left
     - operation: subtract
       name: right_edge_bound
       fillet: 5
+
+  pcb:
+    - name: pcb_outline
     - operation: subtract
       name: usb_cutout
 
-  # left:
-  #   - where: true
-  #     what: rectangle
-  #     size: [cx + 2, cy + 2] # this is choc spacing
-  #     fillet: 2
   leftkeys:
     - where: true
       what: rectangle
       size: [14, 14]
+      fillet: 0.5
 
   switchplatecutout:
     - what: polygon
@@ -162,12 +204,12 @@ outlines:
           shift: [2u, 1u]
         # bottom right corner
         - ref: matrix_inner_top
-          shift: [2u, -1.5u]
+          shift: [2u, -1.5u - 1]
         - ref: matrix_inner_top
-          shift: [0.5u, -1.5u]
+          shift: [0.5u, -1.5u - 1]
 
   switchplateoutline:
-    - name: pcb_trimmed
+    - name: pcb
     - operation: subtract
       name: switchplatecutout
 
@@ -176,11 +218,16 @@ outlines:
     - operation: subtract
       name: leftkeys
 
+  test:
+    - name: leftkeys
+    - operation: stack
+      name: raw_board_right
+
 pcbs:
   left:
     outlines:
       main:
-        outline: pcb_trimmed
+        outline: pcb
     footprints:
       keyswitches:
         where: true
@@ -203,7 +250,7 @@ pcbs:
           orientation: down
         where:
           ref: matrix_inner_top
-          shift: [18.5, -10]
+          shift: [19, -10]
           rotate: -90.0
       nice_nano_right:
         what: nice_nano_low_profile
@@ -211,7 +258,7 @@ pcbs:
           orientation: down
         where:
           ref: mirror_matrix_inner_top
-          shift: [20.5, -10]
+          shift: [21, -10]
           rotate: 90.0
       nice_view:
         what: nice_view
@@ -221,7 +268,7 @@ pcbs:
           CS: P006
         where:
           ref: matrix_inner_top
-          shift: [18.5, -28.25]
+          shift: [19, -29]
           rotate: 90.0
       # Battery jack
       jstph:
