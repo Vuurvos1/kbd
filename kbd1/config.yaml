@@ -184,12 +184,10 @@ pcbs:
     footprints:
       keyswitches:
         where: true
-        what: custom_hotswap
+        what: ks33_mx_hotswap
         params:
-          hotswap: true
           from: '{{column_net}}'
           to: '{{colrow}}'
-      # Main diodes
       diode:
         what: custom_diode
         where: true
