@@ -43,10 +43,10 @@ module.exports = {
       (fp_text value nice_nano (at 0 0) (layer F.SilkS) hide (effects (font (size 1.2 1.2) (thickness 0.2032))))
 
       ${'' /* illustration of the (possible) USB port overhang */}
-      (fp_line (start -14.224 -3.556) (end -14.224 3.81) (layer Dwgs.User) (width 0.2))
-      (fp_line (start -14.224 3.81) (end -19.304 3.81) (layer Dwgs.User) (width 0.2))
-      (fp_line (start -19.304 3.81) (end -19.304 -3.556) (layer Dwgs.User) (width 0.2))
-      (fp_line (start -19.304 -3.556) (end -14.224 -3.556) (layer Dwgs.User) (width 0.2))
+      (fp_line (start -12.954 -3.683) (end -12.954 3.683) (layer Dwgs.User) (width 0.2))
+      (fp_line (start -12.954 3.683) (end -18.034 3.683) (layer Dwgs.User) (width 0.2))
+      (fp_line (start -18.034 3.683) (end -18.034 -3.683) (layer Dwgs.User) (width 0.2))
+      (fp_line (start -18.034 -3.683) (end -12.954 -3.683) (layer Dwgs.User) (width 0.2))
 
       ${'' /* component outline */}
       (fp_line (start 15.24 -8.89) (end -17.78 -8.89) (layer F.Fab) (width 0.381))
