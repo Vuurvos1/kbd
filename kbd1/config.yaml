@@ -69,8 +69,8 @@ points:
           row_net: P106
 
   mirror:
-    ref: matrix_pinky_home
-    distance: 250
+    ref: thumbtop_top_thumb
+    distance: 35
 
 outlines:
   # Rectangle to create a straight vertical right edge
@@ -82,6 +82,7 @@ outlines:
         shift: [2.5u + 1, -1u] # left edge at the top right corner X, shifted left by half width
       size: [2u, 10u] # large enough to cover the entire keyboard
 
+  # TODO: properly center on mcu
   # USB-C cable cutout - 13mm wide, positioned above the nice_nano
   usb_cutout:
     - what: rectangle
