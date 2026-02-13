@@ -205,10 +205,11 @@ outlines:
       size: [14, 14]
       fillet: 0.5
 
+  # mcu cutout
   switchplatecutout:
     - what: polygon
       operation: stack
-      fillet: 0
+      fillet: 1
       points:
         # top left corner
         - ref: matrix_inner_top
@@ -274,13 +275,23 @@ pcbs:
           CS: P006
         where:
           ref: matrix_inner_top
-          shift: [19, -29]
+          shift: [19, -29.5]
           rotate: 90.0
-      # Battery jack
+      # Battery connector
       jstph:
         what: jstph
         where:
           ref: matrix_inner_top
+          shift: [22.75, -35]
+          rotate: -90
+        params:
+          side: B
+          pos: pos
+          neg: GND
+      jstph_right:
+        what: jstph
+        where:
+          ref: mirror_matrix_inner_top
           shift: [22.75, -35]
           rotate: -90
         params:
@@ -298,11 +309,31 @@ pcbs:
           ref: matrix_inner_bottom
           shift: [0.5u + 18, 3]
           rotate: -90.0
+      horizontal_reset_right:
+        what: EVQPUC
+        params:
+          side: F
+          from: GND
+          to: RST
+        where:
+          ref: mirror_matrix_inner_bottom
+          shift: [0.5u + 18, 3]
+          rotate: -90.0
       # Battery on/off switch
       battery_switch:
         what: slider
         where:
           ref: matrix_inner_bottom
+          shift: [0.5u + 18, -6]
+          rotate: -90
+        params:
+          side: F
+          from: pos
+          to: RAW
+      battery_switch_right:
+        what: slider
+        where:
+          ref: mirror_matrix_inner_bottom
           shift: [0.5u + 18, -6]
           rotate: -90
         params:
