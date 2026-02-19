@@ -1,6 +1,22 @@
-# kbd
+<div align="center">
+    <center>
+        <img width="120" height="120" src="assets/icon.png" alt="kbd" align="center">
+    </center>
+</div>
 
-Custom keyboards and key maps
+<div align="center">
+    <center>
+        <h1 align="center"><b>KBD</b></h1>
+    </center>
+    <center>
+        <p align="center">Custom keyboards and key maps</p>
+    </center>
+</div>
+
+## Requirements
+
+- [KiCad](https://www.kicad.org/) - PCB design
+- [pnpm](https://pnpm.io/installation) - Package manager
 
 ## Credits
 
