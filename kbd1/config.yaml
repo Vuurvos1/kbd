@@ -75,7 +75,7 @@ points:
     mcu:
       anchor:
         ref: matrix_inner_top
-        shift: [19, -9]
+        shift: [19, -8.5]
       columns:
         center:
       rows:
@@ -277,12 +277,22 @@ pcbs:
           ref: matrix_inner_top
           shift: [19, -29.5]
           rotate: 90.0
-      # Battery connector
+      # Battery connectors
       jstph:
-        what: jstph
+        what: custom_jstph
         where:
           ref: matrix_inner_top
-          shift: [22.75, -35]
+          shift: [22.75, -33]
+          rotate: -90
+        params:
+          side: F
+          pos: pos
+          neg: GND
+      jstph_middle:
+        what: custom_jstph
+        where:
+          ref: matrix_inner_top
+          shift: [19, -33]
           rotate: -90
         params:
           side: B
@@ -356,11 +366,16 @@ pcbs:
         where:
           ref: matrix_inner_top
           shift: [-0.5u, -0.5u + 1]
-      hole_bottom_right:
+      # hole_bottom_right:
+      #   what: mountinghole
+      #   where:
+      #     ref: matrix_inner_bottom
+      #     shift: [-0.5u, -0.5u + 1]
+      hole_thumb_fan_start:
         what: mountinghole
         where:
-          ref: matrix_inner_bottom
-          shift: [-0.5u, -0.5u + 1]
+          ref: thumbfan_near_thumb
+          shift: [-0.75u, 0.35u]
       hole_thumb_fan:
         what: mountinghole
         where:
