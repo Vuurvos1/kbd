@@ -114,10 +114,10 @@ outlines:
           shift: [-0.5u - pad, 0.5u + pad]
 
         - ref: matrix_pinky_top
-          shift: [0.5u - 4, 0.5u + pad]
+          shift: [0.5u - 2.5, 0.5u + pad]
 
         - ref: matrix_ring_top
-          shift: [-0.5u + 4, 0.5u + 3 + pad]
+          shift: [-0.5u + 2.5, 0.5u + 3 + pad]
 
         - ref: matrix_index_top
           shift: [0.5u - 2.5, 0.5u + 3 + pad]
@@ -153,40 +153,40 @@ outlines:
       points:
         # top right corner
         - ref: mirror_matrix_outer_top
-          shift: [-0.5u - 1, 0.5u + 1]
+          shift: [-0.5u - pad, 0.5u + pad]
 
         - ref: mirror_matrix_pinky_top
-          shift: [0.5u - 4, 0.5u + 1]
+          shift: [0.5u - 2.5, 0.5u + pad]
 
         - ref: mirror_matrix_ring_top
-          shift: [-0.5u + 4, 0.5u + 3 + 1]
+          shift: [-0.5u + 2.5, 0.5u + 3 + pad]
 
         - ref: mirror_matrix_index_top
-          shift: [0.5u - 2.5, 0.5u + 3 + 1]
+          shift: [0.5u - 2.5, 0.5u + 3 + pad]
 
         - ref: mirror_matrix_inner_top
-          shift: [-0.5u + 2.5, 0.5u + 1]
+          shift: [-0.5u + 2.5, 0.5u + pad]
 
         # top left corner
         - ref: mirror_matrix_inner_top
-          shift: [1.5u + 1.75, 0.5u + 1]
+          shift: [1.5u + 1.75, 0.5u + pad]
 
         - ref: mirror_thumbfan_far_thumb
-          shift: [0.5u + 1, 0.8u]
+          shift: [0.5u + pad, 0.8u]
         - ref: mirror_thumbfan_far_thumb
-          shift: [0.5u + 1, -0.8u]
+          shift: [0.5u + pad, -0.8u]
 
         - ref: mirror_thumbfan_far_thumb
           shift: [-0.5u + 1.5, -0.8u]
 
         # thumb fan end (bottom left of first switch)
         - ref: mirror_thumbfan_near_thumb
-          shift: [-0.5u - 1, -0.5u - 1]
+          shift: [-0.5u - pad, -0.5u - pad]
 
         - ref: mirror_matrix_outer_mod
-          shift: [2.5u + 1, -0.5u - 1]
+          shift: [2.5u + pad, -0.5u - pad]
         - ref: mirror_matrix_outer_mod
-          shift: [-0.5u - 1, -0.5u - 1]
+          shift: [-0.5u - pad, -0.5u - pad]
 
   pcb_outline:
     - name: raw_board_left
