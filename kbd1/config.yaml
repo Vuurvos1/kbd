@@ -245,14 +245,14 @@ pcbs:
           from: '{{column_net}}'
           to: '{{colrow}}'
       diode:
-        what: custom_diode
+        what: smd_diode
         where: -/mcu/ # Exclude mcu zone
         params:
           from: '{{colrow}}'
           to: '{{row_net}}'
         adjust:
-          shift: [0, -4.5]
-          rotate: 0
+          shift: [-7, -3.5]
+          rotate: 90
       nice_nano_left:
         what: nice_nano_low_profile
         params:
