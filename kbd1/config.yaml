@@ -194,10 +194,36 @@ outlines:
       name: right_edge_bound
       fillet: 5
 
+  # Right side outlines (mirrored from left)
+  right_edge_bound_right:
+    - what: rectangle
+      where:
+        ref: mirror_matrix_inner_top
+        shift: [2.5u + 1, -1u]
+      size: [2u, 10u]
+
+  usb_cutout_right:
+    - what: rectangle
+      where:
+        ref: mirror_mcu_center_center
+        shift: [0, 21]
+      size: [13, 10]
+      fillet: 2
+
+  pcb_outline_right:
+    - name: raw_board_right
+    - operation: subtract
+      name: right_edge_bound_right
+      fillet: 5
+
   pcb:
     - name: pcb_outline
+    - operation: add
+      name: pcb_outline_right
     - operation: subtract
       name: usb_cutout
+    - operation: subtract
+      name: usb_cutout_right
 
   leftkeys:
     - what: rectangle
@@ -246,13 +272,22 @@ pcbs:
           to: '{{colrow}}'
       diode:
         what: smd_diode
-        where: -/mcu/ # Exclude mcu zone
+        where: /^(matrix|thumbfan|thumbtop)_.*/
         params:
           from: '{{colrow}}'
           to: '{{row_net}}'
         adjust:
           shift: [-7, -3.5]
           rotate: 90
+      diode_right:
+        what: smd_diode
+        where: /^mirror_(matrix|thumbfan|thumbtop)_.*/
+        params:
+          from: '{{colrow}}'
+          to: '{{row_net}}'
+        adjust:
+          shift: [7, -3.5]
+          rotate: -90
       nice_nano_left:
         what: nice_nano_low_profile
         params:
@@ -264,8 +299,7 @@ pcbs:
         params:
           orientation: down
         where:
-          ref: mirror_matrix_inner_top
-          shift: [21, -10]
+          ref: mirror_mcu_center_center
 
       nice_view:
         what: nice_view
@@ -274,9 +308,19 @@ pcbs:
           SCL: P017
           CS: P006
         where:
-          ref: matrix_inner_top
-          shift: [19, -29.5]
+          ref: mcu_center_center
+          shift: [0, -20.5]
           rotate: 90.0
+      nice_view_right:
+        what: nice_view
+        params:
+          SDA: P020
+          SCL: P017
+          CS: P006
+        where:
+          ref: mirror_mcu_center_center
+          shift: [0, -20.5]
+          rotate: 270.0
       # Battery connectors
       jstph:
         what: custom_jstph
@@ -299,10 +343,20 @@ pcbs:
           pos: pos
           neg: GND
       jstph_right:
-        what: jstph
+        what: custom_jstph
         where:
           ref: mirror_matrix_inner_top
-          shift: [22.75, -35]
+          shift: [22.75, -33]
+          rotate: -90
+        params:
+          side: F
+          pos: pos
+          neg: GND
+      jstph_right_middle:
+        what: custom_jstph
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [19, -33]
           rotate: -90
         params:
           side: B
