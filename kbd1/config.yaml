@@ -366,7 +366,7 @@ pcbs:
       horizontal_reset:
         what: EVQPUC
         params:
-          side: F
+          side: B
           from: GND
           to: RST
         where:
@@ -376,7 +376,7 @@ pcbs:
       horizontal_reset_right:
         what: EVQPUC
         params:
-          side: F
+          side: B
           from: GND
           to: RST
         where:
@@ -391,7 +391,7 @@ pcbs:
           shift: [0.5u + 18, -6]
           rotate: -90
         params:
-          side: F
+          side: B
           from: pos
           to: RAW
       battery_switch_right:
@@ -401,7 +401,7 @@ pcbs:
           shift: [0.5u + 18, -6]
           rotate: -90
         params:
-          side: F
+          side: B
           from: pos
           to: RAW
       # Mounting holes
@@ -420,11 +420,11 @@ pcbs:
         where:
           ref: matrix_inner_top
           shift: [-0.5u, -0.5u + 1]
-      # hole_bottom_right:
-      #   what: mountinghole
-      #   where:
-      #     ref: matrix_inner_bottom
-      #     shift: [-0.5u, -0.5u + 1]
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: matrix_inner_bottom
+          shift: [-0.5u, -0.5u + 1]
       hole_thumb_fan_start:
         what: mountinghole
         where:
@@ -434,6 +434,37 @@ pcbs:
         what: mountinghole
         where:
           ref: thumbfan_far_thumb
+          shift: [-0.5u, 0.5u]
+      # Right side mounting holes
+      mirror_hole_top_left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_outer_top
+          shift: [0.5u, -0.5u]
+      mirror_hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_outer_bottom
+          shift: [0.5u, -0.5u]
+      mirror_hole_top_right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [-0.5u, -0.5u + 1]
+      mirror_hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_inner_bottom
+          shift: [-0.5u, -0.5u + 1]
+      mirror_hole_thumb_fan_start:
+        what: mountinghole
+        where:
+          ref: mirror_thumbfan_near_thumb
+          shift: [-0.75u, 0.35u]
+      mirror_hole_thumb_fan:
+        what: mountinghole
+        where:
+          ref: mirror_thumbfan_far_thumb
           shift: [-0.5u, 0.5u]
 
 cases:
