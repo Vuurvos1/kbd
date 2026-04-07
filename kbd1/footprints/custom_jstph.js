@@ -36,7 +36,6 @@ module.exports = {
         (fp_line (start 2.95 6.25) (end 2.95 -1.35) (layer ${p.side}.SilkS) (width 0.15))
         (fp_line (start 2.95 -1.35) (end 2.25 -1.35) (layer ${p.side}.SilkS) (width 0.15))
         (fp_line (start 2.25 -1.35) (end 2.25 0.25) (layer ${p.side}.SilkS) (width 0.15))
-        (fp_line (start 2.25 0.25) (end -2.25 0.25) (layer ${p.side}.SilkS) (width 0.15))
 
         ${'' /* plus symbol for positive pin */}
         (fp_line (start ${plusX} 1.5) (end ${plusX} 2.0) (layer ${p.side}.SilkS) (width 0.15))

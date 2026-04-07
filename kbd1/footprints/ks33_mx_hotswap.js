@@ -67,8 +67,8 @@ module.exports = {
         (pad "" np_thru_hole circle (at ${def_neg}2.6 -5.75) (size 3 3) (drill 3) (layers *.Cu *.Mask))
         
         ${'' /* Through-hole pads for switch pins - merged positions for both sockets */}
-        (pad 1 thru_hole circle (at ${def_pos}2.54 -5.08) (size 3.6 3.6) (drill 3) (layers *.Cu *.Mask) ${p.from})
-        (pad 1 thru_hole circle (at ${def_pos}4.4 -4.7) (size 3.6 3.6) (drill 3) (layers *.Cu *.Mask) ${p.from})
+        (pad 1 np_thru_hole circle (at ${def_pos}2.54 -5.08) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+        (pad 1 np_thru_hole circle (at ${def_pos}4.4 -4.7) (size 3 3) (drill 3) (layers *.Cu *.Mask))
         
         ${'' /* SMD pads on back for hotswap socket contacts */}
         ${'' /* Pin 1 - MX hotswap position */}
