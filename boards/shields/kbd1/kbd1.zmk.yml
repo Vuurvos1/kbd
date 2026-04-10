@@ -1,0 +1,10 @@
+file_format: "1"
+id: kbd1
+name: KBD1
+type: shield
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - kbd1_left
+  - kbd1_right
