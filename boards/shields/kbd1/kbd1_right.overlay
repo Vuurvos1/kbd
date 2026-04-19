@@ -14,7 +14,7 @@
     col-gpios
         = <&pro_micro 15 GPIO_ACTIVE_HIGH>   // P0.02 - outer
         , <&pro_micro 14 GPIO_ACTIVE_HIGH>   // P1.15 - pinky
-        , <&pro_micro 13 GPIO_ACTIVE_HIGH>   // P1.13 - ring
+        , <&gpio1 13 GPIO_ACTIVE_HIGH>        // P1.13 - ring
         , <&pro_micro 12 GPIO_ACTIVE_HIGH>   // P1.11 - middle
         , <&pro_micro 11 GPIO_ACTIVE_HIGH>   // P0.10 - index
         , <&pro_micro 10 GPIO_ACTIVE_HIGH>   // P0.09 - inner
