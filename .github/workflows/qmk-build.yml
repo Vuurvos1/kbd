@@ -1,20 +1,53 @@
 name: Build QMK firmware
 on:
-    push:
-        paths:
-            - "keyboards/**"
-            - "qmk.json"
-            - ".github/workflows/qmk-build.yml"
-    pull_request:
-        paths:
-            - "keyboards/**"
-            - "qmk.json"
-            - ".github/workflows/qmk-build.yml"
-    workflow_dispatch:
+  push:
+    paths:
+      - "keyboards/**"
+      - "qmk.json"
+      - ".github/workflows/qmk-build.yml"
+  workflow_dispatch:
 
 jobs:
-    build:
-        uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+    steps:
+      - name: Disable git safe directory checks
+        run: git config --global --add safe.directory '*'
+
+      - name: Checkout userspace
+        uses: actions/checkout@v4
         with:
-            qmk_repo: qmk/qmk_firmware
-            qmk_ref: master
+          submodules: recursive
+
+      - name: Checkout QMK firmware
+        uses: actions/checkout@v4
+        with:
+          repository: qmk/qmk_firmware
+          path: qmk_firmware
+          submodules: recursive
+
+      - name: Install QMK firmware Python dependencies
+        run: pip install -r qmk_firmware/requirements.txt
+
+      - name: Configure QMK CLI
+        run: |
+          qmk config userspace_compile.parallel=$(nproc)
+          qmk config user.qmk_home=$GITHUB_WORKSPACE/qmk_firmware
+          qmk config user.overlay_dir=$GITHUB_WORKSPACE
+
+      - name: Validate userspace
+        run: qmk userspace-doctor
+
+      - name: Build firmware
+        run: qmk userspace-compile
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: firmware
+          path: |
+            *.hex
+            *.bin
+            *.uf2
