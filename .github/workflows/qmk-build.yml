@@ -14,7 +14,7 @@ on:
 
 jobs:
     build:
-        uses: qmk/qmk_userspace/.github/workflows/qmk_userspace.yml@main
+        uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
         with:
             qmk_repo: qmk/qmk_firmware
             qmk_ref: master
