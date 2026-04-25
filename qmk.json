@@ -1,7 +1,0 @@
-{
-    "userspace_version": "1.0",
-    "build_targets": [
-        ["dactyl_cc", "default"],
-        ["dactyl_cc", "dvorak"]
-    ]
-}
