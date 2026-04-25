@@ -336,7 +336,7 @@ pcbs:
         what: custom_jstph
         where:
           ref: matrix_inner_top
-          shift: [19, -33]
+          shift: [20, -33]
           rotate: -90
         params:
           side: B
@@ -356,7 +356,7 @@ pcbs:
         what: custom_jstph
         where:
           ref: mirror_matrix_inner_top
-          shift: [19, -33]
+          shift: [20, -33]
           rotate: -90
         params:
           side: B
