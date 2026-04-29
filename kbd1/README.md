@@ -19,6 +19,10 @@ For a full build you need:
 | 2x  | nice!nano v2            | or compatible nRF52840 board                               |
 | 4x  | Mill-Max 1x12 sockets   | for socketing the MCUs                                     |
 | —   | MCU pins                | diode legs work well                                       |
+| 4x  | M2.5x3x3.5 heatset inserts | for case assembly                                      |
+| 6x  | M2.5x4x3.5 heatset inserts | for case assembly                                      |
+| 4x  | M2.5x6 countersunk screws  | for case assembly                                      |
+| 6x  | M2.5x8 countersunk screws  | for case assembly                                      |
 | 8x  | Rubber feet             | 10mm circle                                                |
 | 1x  | Keycap set              | LSA or similar                                             |
 | 2x  | nice!view display       | optional                                                   |
