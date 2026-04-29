@@ -2,6 +2,8 @@
 
 A Corne / Lily58 inspired 56-key split wireless keyboard, designed with [Ergogen](https://docs.ergogen.xyz/) and [KiCad](https://www.kicad.org/).
 
+![KBD1](kbd1.jpg)
+
 ## BOM (Bill of Materials)
 
 For a full build you need:
