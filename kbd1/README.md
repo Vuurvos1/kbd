@@ -27,4 +27,8 @@ For a full build you need:
 | 1x  | Keycap set              | LSA or similar                                             |
 | 2x  | nice!view display       | optional                                                   |
 
+## Firmware
 
+This keyboard runs [ZMK](https://zmk.dev/) firmware. The keymap and configuration are in the [`config/`](../config/) directory.
+
+Firmware is automatically built by GitHub Actions on every push. Download the latest `.uf2` files from the [Actions](../../actions) tab, then flash by double-tapping the reset button and copying the file to the USB drive that appears.
