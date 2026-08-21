@@ -90,15 +90,15 @@
             , <&key_physical_attrs 100 100 1200  337     0    0     0>
             , <&key_physical_attrs 100 100 1300  337     0    0     0>
             // Thumb - left (near, home, far, top)
-            , <&key_physical_attrs 100 100  250  425     0    0     0>
-            , <&key_physical_attrs 100 100  360  440  (-1500) 410  490>
-            , <&key_physical_attrs 100 125  460  440  (-3000) 510  502>
-            , <&key_physical_attrs 100 100  575  350     0    0     0>
+            , <&key_physical_attrs 100 100  350  411     0    0     0>
+            , <&key_physical_attrs 100 100  462  426  (-1500) 512  476>
+            , <&key_physical_attrs 100 125  572  443  (-3000) 622  506>
+            , <&key_physical_attrs 100 100  600  321     0    0     0>
             // Thumb - right (top, far, home, near)
-            , <&key_physical_attrs 100 100  725  350     0    0     0>
-            , <&key_physical_attrs 100 125  840  440   3000  890  502>
-            , <&key_physical_attrs 100 100  940  440   1500  990  490>
-            , <&key_physical_attrs 100 100 1050  425     0    0     0>
+            , <&key_physical_attrs 100 100  700  321     0    0     0>
+            , <&key_physical_attrs 100 125  728  443   3000  778  506>
+            , <&key_physical_attrs 100 100  838  426   1500  888  476>
+            , <&key_physical_attrs 100 100  950  411     0    0     0>
             ;
     };
 
