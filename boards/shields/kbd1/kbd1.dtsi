@@ -91,13 +91,13 @@
             , <&key_physical_attrs 100 100 1300  337     0    0     0>
             // Thumb - left (near, home, far, top)
             , <&key_physical_attrs 100 100  350  411     0    0     0>
-            , <&key_physical_attrs 100 100  462  426  (-1500) 512  476>
-            , <&key_physical_attrs 100 125  572  443  (-3000) 622  506>
+            , <&key_physical_attrs 100 100  462  426   1500  512  476>
+            , <&key_physical_attrs 100 125  572  443   3000  622  506>
             , <&key_physical_attrs 100 100  600  321     0    0     0>
             // Thumb - right (top, far, home, near)
             , <&key_physical_attrs 100 100  700  321     0    0     0>
-            , <&key_physical_attrs 100 125  728  443   3000  778  506>
-            , <&key_physical_attrs 100 100  838  426   1500  888  476>
+            , <&key_physical_attrs 100 125  728  443  (-3000) 778  506>
+            , <&key_physical_attrs 100 100  838  426  (-1500) 888  476>
             , <&key_physical_attrs 100 100  950  411     0    0     0>
             ;
     };
