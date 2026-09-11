@@ -16,7 +16,7 @@
 ## Projects
 
 - [**KBD1**](kbd1/) — A 56-key split wireless keyboard inspired by the Corne and Lily58, designed with Ergogen and KiCad. See the [KBD1 README](kbd1/README.md) for the full BOM.
-- **Dactyl CC** — Custom keymaps for the Dactyl CC keyboard (QMK)
+- **Dactyl CC** — Custom keymaps for the Dactyl CC keyboard (QMK), including a [Vial](keyboards/dactyl_cc/readme.md#vial--remapping-in-the-browser) keymap for remapping in the browser
 - **Footprints** — Reusable KiCad footprints for hotswap sockets, panelization, and more
 
 ## Requirements
