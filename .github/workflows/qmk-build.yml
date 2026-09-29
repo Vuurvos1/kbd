@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  qmk:
+    name: QMK (${{ matrix.keymap }})
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
     strategy:
@@ -47,3 +48,43 @@ jobs:
             qmk_firmware/*.hex
             qmk_firmware/*.bin
             qmk_firmware/*.uf2
+
+  # Vial lives in its own QMK fork, so it needs a separate checkout. A failure
+  # here is usually flash: the ATmega32U4 has 28 KB and the build uses 90%.
+  vial:
+    name: Vial
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+    steps:
+      - name: Disable git safe directory checks
+        run: git config --global --add safe.directory '*'
+
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Vial firmware
+        uses: actions/checkout@v4
+        with:
+          repository: vial-kb/vial-qmk
+          path: vial-qmk
+          submodules: recursive
+
+      - name: Install QMK firmware Python dependencies
+        run: pip install -r vial-qmk/requirements.txt
+
+      - name: Link custom keyboard into vial-qmk
+        run: ln -s "$GITHUB_WORKSPACE/keyboards/dactyl_cc" vial-qmk/keyboards/dactyl_cc
+
+      - name: Build firmware
+        working-directory: vial-qmk
+        run: make dactyl_cc:vial
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: dactyl_cc_vial
+          path: |
+            vial-qmk/*.hex
+            vial-qmk/*.bin
+            vial-qmk/*.uf2
